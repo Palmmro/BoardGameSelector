@@ -1,5 +1,4 @@
 class BoardGame:
-    # name = "namn"
     time = 20
     min_players = 2
     max_players = 5
