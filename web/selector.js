@@ -8,6 +8,47 @@ var rows = 1;
 var cols = 1;
 var games = [rows-1];
 
+var prefTime;
+var prefNrPlayers;
+var prefGamesArr = [];
+
+
+
+function onClickButton() {
+    loadData();
+    loadPreferences();
+    displayRandomGame();
+}
+
+function displayRandomGame() {
+    var textField1 = document.getElementById("textField1");
+    if(prefGamesArr.length == 0){
+        textField1.innerHTML = "<p>No matching game</p>";
+    } else {
+        var random = Math.floor((Math.random() * (prefGamesArr.length-1) ));
+        textField1.innerHTML = "<p>"+prefGamesArr[random].name+"</p>";
+    }
+}
+
+function loadPreferences() {
+    var inputTime = document.getElementById("inputtime");
+    var inputPlayers = document.getElementById("inputplayers");
+    prefTime = inputTime.value;
+    prefNrPlayers = inputPlayers.value;
+
+    prefGamesArr = [];
+    for(var i = 0; i < games.length; i++){      //TODO could be more optimal but idc
+        if((games[i].length <= prefTime || prefTime =="")
+            && ((games[i].minplayers <= prefNrPlayers
+            && games[i].maxplayers >= prefNrPlayers)||prefNrPlayers=="")){
+            prefGamesArr.push(games[i]);
+        }
+    }
+    console.log(prefGamesArr);
+
+
+}
+
 function loadData() {
     console.log("Click");
     var url="https://docs.google.com/spreadsheets/d/1graF65EZVf1rSmRg7gogaaspT2UbuICsgrccIjvW3fg/pub?output=tsv";
@@ -19,6 +60,7 @@ function loadData() {
             updateTableSize();
             dataTable = createArray(rows,cols);
             loadTable();
+            fillGameArray();
         }
     };
     xmlhttp.open("GET",url,false);  //depricated need to set async to true
@@ -90,15 +132,7 @@ function fillGameArray() {
 }
 
 
-function onClickButton() {
-    loadData();
-    fillGameArray();
 
-    var random = Math.floor((Math.random() * (games.length-1) ));
-    var textField1 = document.getElementById("textField1");
-    textField1.innerHTML = "<p>"+games[random].name+"</p>";
-
-}
 
 
 
