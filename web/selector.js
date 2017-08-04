@@ -12,7 +12,7 @@ var prefTime;
 var prefNrPlayers;
 var prefGamesArr = [];
 
-
+var url="https://docs.google.com/spreadsheets/d/1graF65EZVf1rSmRg7gogaaspT2UbuICsgrccIjvW3fg/pub?output=tsv";
 
 function onClickButton() {
     loadData();
@@ -25,7 +25,7 @@ function displayRandomGame() {
     if(prefGamesArr.length == 0){
         textField1.innerHTML = "<p>No matching game</p>";
     } else {
-        var random = Math.floor((Math.random() * (prefGamesArr.length-1) ));
+        var random = Math.floor((Math.random() * (prefGamesArr.length-1) +1));
         textField1.innerHTML = "<p>"+prefGamesArr[random].name+"</p>";
     }
 }
@@ -51,7 +51,7 @@ function loadPreferences() {
 
 function loadData() {
     console.log("Click");
-    var url="https://docs.google.com/spreadsheets/d/1graF65EZVf1rSmRg7gogaaspT2UbuICsgrccIjvW3fg/pub?output=tsv";
+
     var xmlhttp=new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
