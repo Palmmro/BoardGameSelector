@@ -92,7 +92,7 @@ function fillGameArray() {
 
 function onClickButton() {
     loadData();
-    fillGameArray()
+    fillGameArray();
 
     var random = Math.floor((Math.random() * (games.length-1) ));
     var textField1 = document.getElementById("textField1");
