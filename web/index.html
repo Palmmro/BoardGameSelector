@@ -2,22 +2,31 @@
 
 <html>
 
+<!-- Load jQuery and Sheetrock from CDNJS -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.1.4/dist/sheetrock.min.js"></script>-->
+<script src="selector.js" charset="UTF-8"></script>
+
+
 <head>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 
-<div class="textField" id="textField1"><p>Text before</p></div><br/>
+<table id="statistics" class="table table-condensed table-striped"></table>
+
+<div id="display"></div>
+
+<div class="textField" id="textField1"><p>Monopol?</p></div><br/>
 
 
 <div>
     <button id="button1" onclick="onClickButton()">
-        New Concepts
+        New Game
     </button>
 </div>
 
-<script src="selector.js" charset="UTF-8"></script>
 
 
 </body>
