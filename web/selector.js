@@ -51,7 +51,11 @@ function loadPreferences() {
 }
 
 /**
- * Loads data from google docs and stores it as game objects in "games"
+ * Loads data from google spreadsheet and stores it as game objects in "gamesArr"
+ * First gets the outputStr from the html request
+ * Then uses outputStr to fill the 2x2 matrix dataTable with the data
+ * Finally uses dataTable to create game objects and fills them in gamesArr
+ * TODO error message if no internet or request failed
  */
 function loadData() {
     var xmlhttp=new XMLHttpRequest();
@@ -69,7 +73,7 @@ function loadData() {
 }
 
 /**
- * Creates multidimensional array (multiple arguments are possible)
+ * Returns multidimensional array (multiple arguments are possible)
  * @param length
  * @returns {Array}
  */
@@ -85,7 +89,7 @@ function createArray(length) {
 }
 
 /**
- * Updates matrix dataTable with the "outputStr" string from google docs
+ * Updates matrix dataTable using the "outputStr" string from google docs
  */
 function loadTable(){
     var currentStart = 0;
@@ -111,7 +115,7 @@ function loadTable(){
 }
 
 /**
- * Gets the size of the spreadsheet
+ * Gets the size of the spreadsheet and updates variables rows and cols
  */
 function updateTableSize(){
     var nrTab = 0;
@@ -130,7 +134,7 @@ function updateTableSize(){
 }
 
 /**
- * Fills the array "gamesArr" with game objects with data from dataTable
+ * Fills the array "gamesArr" with game objects using data from dataTable
  */
 function fillGameArray() {
     for(var i = 1; i < rows; i++){
