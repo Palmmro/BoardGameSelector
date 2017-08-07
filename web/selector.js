@@ -2,17 +2,18 @@
  * Created by palm on 2017-07-21.
  */
 
-var outputStr = "";
+var outputStr = "";     //the output obtained from the http request
 var dataTable;
 var rows = 1;
 var cols = 1;
-var gamesArr = [rows-1];
+var gamesArr;
 
 var prefTime;
 var prefNrPlayers;
 var prefGamesArr = [];
 
-var url="https://docs.google.com/spreadsheets/d/1graF65EZVf1rSmRg7gogaaspT2UbuICsgrccIjvW3fg/pub?output=tsv";
+// var url="https://docs.google.com/spreadsheets/d/1graF65EZVf1rSmRg7gogaaspT2UbuICsgrccIjvW3fg/pub?output=tsv";
+var url="https://docs.google.com/spreadsheets/d/1-C1du9zEFJ0qIMsIoHBLcRhdjK8s6HdWahkh8bpuuOU/pub?output=tsv";
 
 function onClickButton() {
     loadData();
@@ -68,8 +69,10 @@ function loadData() {
             fillGameArray();
         }
     };
+
     xmlhttp.open("GET",url,false);  //depricated need to set async to true
     xmlhttp.send(null);
+
 }
 
 /**
@@ -89,7 +92,7 @@ function createArray(length) {
 }
 
 /**
- * Updates matrix dataTable using the "outputStr" string from google docs
+ * Updates matrix dataTable using the "outputStr"
  */
 function loadTable(){
     var currentStart = 0;
@@ -115,7 +118,7 @@ function loadTable(){
 }
 
 /**
- * Gets the size of the spreadsheet and updates variables rows and cols
+ * Updates variables rows and cols depending on the size of the spreadsheet obtained from outputStr
  */
 function updateTableSize(){
     var nrTab = 0;
@@ -137,6 +140,7 @@ function updateTableSize(){
  * Fills the array "gamesArr" with game objects using data from dataTable
  */
 function fillGameArray() {
+    gamesArr = [rows-1];
     for(var i = 1; i < rows; i++){
         gamesArr[i-1] = {
             name:dataTable[i][0],
