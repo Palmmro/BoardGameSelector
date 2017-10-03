@@ -40,12 +40,12 @@ function displayRandomGame() {
 function loadPreferences() {
     prefTime = document.getElementById("inputtime").value;
     prefNrPlayers = document.getElementById("inputplayers").value;
-
     prefGamesArr = [];
+
     for(var i = 0; i < gamesArr.length; i++){      //TODO could be more optimal but idc
-        if((gamesArr[i].time <= prefTime || prefTime =="")
+        if((gamesArr[i].time <= prefTime || prefTime == "")
             && ((gamesArr[i].minplayers <= prefNrPlayers
-            && gamesArr[i].maxplayers >= prefNrPlayers)||prefNrPlayers=="")){
+            && gamesArr[i].maxplayers >= prefNrPlayers) || prefNrPlayers == "")){
             prefGamesArr.push(gamesArr[i]);
         }
     }
