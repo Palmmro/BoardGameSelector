@@ -15,9 +15,10 @@ var prefGamesArr = [];
 // var url="https://docs.google.com/spreadsheets/d/1graF65EZVf1rSmRg7gogaaspT2UbuICsgrccIjvW3fg/pub?output=tsv";
 var url="https://docs.google.com/spreadsheets/d/1-C1du9zEFJ0qIMsIoHBLcRhdjK8s6HdWahkh8bpuuOU/pub?output=tsv";
 
-function onClickButton() {
     loadData();
     loadPreferences();
+function onClickButton() {
+    console.log("Click");
     displayRandomGame();
 }
 
